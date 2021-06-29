@@ -1,0 +1,7 @@
+.dash-col-left, .dash-col-right {
+    height: max-content;
+}
+
+.dashboard {
+    height: 80vh;
+}
