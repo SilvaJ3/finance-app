@@ -1,7 +1,7 @@
 import 'bootstrap/scss/bootstrap.scss';
+import  '@fortawesome/fontawesome-free/js/all';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 
 // Import Dashboard / Budget / Statistiques
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -20,19 +20,5 @@ function App() {
     
   );
 }
-
-
-// V1
-// function App() {
-//   return (
-//     <div className="App">
-//       <Header />
-
-//       <Dashboard />
-
-//       <Footer />
-//     </div>
-//   );
-// }
 
 export default App;
