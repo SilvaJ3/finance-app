@@ -1,5 +1,6 @@
 import React from 'react'
-// import "/Header/header.css"
+import { Link } from "react-router-dom"
+import "./header.css"
 
 function Header() {
     return (
@@ -15,13 +16,13 @@ function Header() {
                         <div className="collapse navbar-collapse d-flex justify-content-center my-2" id="navbarNav">
                             <ul className="navbar-nav d-flex justify-content-evenly">
                                 <li className="nav-item mx-3">
-                                    <a className="nav-link active text-white" aria-current="page" href="">Dashboard</a>
+                                    <Link className="link" to ="/">ACCUEIL</Link>
                                 </li>
                                 <li className="nav-item mx-3">
-                                    <a className="nav-link text-white" href="">Budget</a>
+                                    <Link className="link" to ="/Budget">BUDGET</Link>
                                 </li>
                                 <li className="nav-item mx-3">
-                                    <a className="nav-link text-white" href="">Statistiques</a>
+                                    <Link className="link" to ="/Stats">STATISTIQUES</Link>
                                 </li>
                             </ul>
                         </div>

@@ -1,30 +1,54 @@
 import React from "react";
+import { useState } from "react";
 import "../NewExpenses/NewExpenses.css"
 
 const NewExpenses = () => {
 
-    let descriptionValue = document.getElementsByClassName("description")[0];
-    let amountValue = document.getElementsByClassName("amountExpenses")[0];
-    let categorySelected = document.getElementsByClassName("category")[0];
-    let time = document.getElementById("time");
+    const [expense, setState] = useState({
+        description : "",
+        amount: 0,
+        category: "",
+        time: "",
+    });
 
-    const handleClick = (description, amount, category, time) => {
-        if (description == "" ) {
-            
-        }
-        console.log(description.value);
-        let new_description = description.value;
-        console.log(amount.value);
-        let new_amount = amount.value;
-        console.log(category.value);
-        let new_category = category.value;
-        console.log(time.value);
-        let new_time = time.value
+    const handleSubmit = event => {
+        event.preventDefault();
+        let description = event.target[0].value;
+        let amount = event.target[1].value;
+        let category = event.target[2].value;
+        let time = event.target[3].value;
+        setState({})
+
+        // Reset
+
+        setState({ description: "", amount: 0, category: "", time:""})
     }
+
+    // const handleClick = (description, amount, category, time) => {
+    //     setState({ descriptionVal, amountVal, categoryVal, timeVal })
+    //     console.log(expense);
+        // let Expense = ( description, amount, category, time ) => {
+        //     let ExpensesArray;
+        //     let newExp = {
+        //         description: description,
+        //         jour: time,
+        //         amount: amount,
+        //         category: category,
+        //     }
+        //     setState(ExpensesArray)
+        // return (
+        //     <div className= "d-flex flex-column justify-content-center">
+        //         <h1>Dépense du {time} d'une valeur de {amount} €</h1>
+        //         <p>{description}</p>
+        //         <p>{category}</p>
+        //     </div>
+        // )
+        //     }
+        // }
 
     return(
         <div className="d-flex justify-content-center w-100">
-            <form className="d-flex flex-column w-100">
+            <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
                 <div className="d-flex">
                     <div className="col-9">
                         <input type="text" placeholder="Description de votre dépense..." className="description w-100 rounded-0" required />
@@ -50,7 +74,7 @@ const NewExpenses = () => {
                         <input type="date" id="time" className="time" required min="2020-01-01" max="2023-12-31"/>
                     </div>
                     <div className="col-3">
-                        <button type="submit" className="btn btn-primary btnExpenses w-100 rounded-0" onClick={() => handleClick(descriptionValue, amountValue, categorySelected, time)}>Valider</button>
+                        <button type="submit" className="btn btn-primary btnExpenses w-100 rounded-0" >Valider</button>
                     </div>
                     
                 </div>
