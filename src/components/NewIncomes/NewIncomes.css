@@ -1,0 +1,16 @@
+.description {
+    width: 400px;
+}
+
+.category {
+    width: 350px;
+}
+
+.expense {
+    border: solid 3px black;
+    border-radius: 15px;
+}
+
+.icons {
+    font-size: 35px;
+}
