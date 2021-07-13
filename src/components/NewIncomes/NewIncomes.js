@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./NewIncomes.css"
 
 const NewIncomes = (props) => {
@@ -28,16 +28,23 @@ const NewIncomes = (props) => {
 
     /* -------------------------- Props vers le parent -------------------------- */
 
-    // const incomeData = (income) => {
-    //     this.props.onIncomeData(income);
-    // }
-
     props.income(income)
 
-    /* ------------------------------ Local Storage ----------------------------- */
+    /* ------------------------ Local Storage tuto dev.to ----------------------- */
 
-    // const expenseSaved = {...income};
-    // localStorage.setItem("expenseSaved", expenseSaved)
+    useEffect(()=>{
+
+        const recetteStorage = localStorage.getItem('recette')
+        
+        if(recetteStorage){
+            setIncome(JSON.parse(recetteStorage))
+        }
+        },[])
+        
+        useEffect(()=>{
+        
+            localStorage.setItem('recette',JSON.stringify(income))
+        })
 
     return(
         <div className="d-flex flex-column justify-content-center w-100">
