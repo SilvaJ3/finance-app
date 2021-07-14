@@ -61,7 +61,7 @@ const NewIncomes = (props) => {
                     <div className="d-flex justify-content-center align-items-center">
                         <div className="col-6">
                             <select className="form-select category rounded-0" name="category" aria-label="Default select example">
-                                <option defaultValue>Autres</option>
+                                <option defaultValue value="Autres">Autres</option>
                                 <option value="Gain">Gain</option>
                                 <option value="Impot">Impôt</option>
                                 <option value="Lotto">Lotto</option>
