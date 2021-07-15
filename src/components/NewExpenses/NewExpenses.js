@@ -106,7 +106,6 @@ const NewExpenses = (props) => {
                             <button className="btn border-none"><i className="far fa-edit icons"></i></button>
                             <button className="btn border-none" onClick={(event) => handleDelete(event)} key={index}><i className="fas fa-eraser icons"></i></button>
                         </div>
-                        
                     </div>
                 )
                 }

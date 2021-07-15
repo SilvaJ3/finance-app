@@ -104,24 +104,27 @@ export default class Statistiques extends Component {
             <Fragment>
                 <Header />
                 <section>
-                <h1 className="text-center text-decoration-underline">Votre page de Statistiques</h1>
+                    <div className="container p-5">
+                        <h1 className="text-center text-decoration-underline pb-5">Votre page de Statistiques</h1>
 
-                <div className="container">
-                    <nav className="d-flex justify-content-center">
-                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button className="nav-link active" id="nav-expense-tab" data-bs-toggle="tab" data-bs-target="#nav-expense" type="button" role="tab" aria-controls="nav-expense" aria-selected="true">Dépense</button>
-                            <button className="nav-link" id="nav-income-tab" data-bs-toggle="tab" data-bs-target="#nav-income" type="button" role="tab" aria-controls="nav-income" aria-selected="false">Recettes</button>
-                        </div>
-                    </nav>
-                    <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="nav-expense" role="tabpanel" aria-labelledby="nav-expense-tab">
-                            <Chart />
-                        </div>
-                        <div className="tab-pane fade" id="nav-income" role="tabpanel" aria-labelledby="nav-income-tab">
-                            <Chart2 />
+                        <div className="container">
+                            <nav className="d-flex justify-content-center">
+                                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button className="nav-link active" id="nav-expense-tab" data-bs-toggle="tab" data-bs-target="#nav-expense" type="button" role="tab" aria-controls="nav-expense" aria-selected="true">Dépense</button>
+                                    <button className="nav-link" id="nav-income-tab" data-bs-toggle="tab" data-bs-target="#nav-income" type="button" role="tab" aria-controls="nav-income" aria-selected="false">Recettes</button>
+                                </div>
+                            </nav>
+                            <div className="tab-content" id="nav-tabContent">
+                                <div className="tab-pane fade show active" id="nav-expense" role="tabpanel" aria-labelledby="nav-expense-tab">
+                                    <Chart />
+                                </div>
+                                <div className="tab-pane fade" id="nav-income" role="tabpanel" aria-labelledby="nav-income-tab">
+                                    <Chart2 />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                
             </section>
                 <Footer/>
             </Fragment>

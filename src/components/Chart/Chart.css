@@ -1,0 +1,9 @@
+.chart-container {
+    position: relative; 
+    /* width: 40%; */
+    margin: 20px;
+}
+
+.card-stats {
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, .3);
+}

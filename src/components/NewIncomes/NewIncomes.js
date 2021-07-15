@@ -51,7 +51,7 @@ const NewIncomes = (props) => {
         })
 
     return(
-        <div className="d-flex flex-column justify-content-center w-100">
+        <div className="formulaire d-flex flex-column justify-content-center w-100">
             <div className="form-container border">
                 <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
                     <div className="d-flex">

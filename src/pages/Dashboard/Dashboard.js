@@ -51,7 +51,7 @@ function Dashboard() {
         <Fragment>
             <Header />
             <div className="container dashboard">
-                <h1 className="text-center pb-2">Bienvenue sur votre page d'accueil</h1>
+                <h1 className="text-center pb-5 text-decoration-underline">Bienvenue sur votre page d'accueil</h1>
                 <div className="row">
                     <div className="col-4 border d-flex flex-column dash-col-right">
                         <div>
@@ -63,7 +63,7 @@ function Dashboard() {
                             <p>{totalRecette} €</p>
                         </div>
                         <div>
-                            <h1>Solde :</h1>
+                            <h1>Balance :</h1>
                             <p>{solde} €</p>
                         </div>
                     </div>

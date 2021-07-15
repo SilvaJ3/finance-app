@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+import "./Chart.css";
+
 
 export default function Chart() {
 
@@ -14,12 +16,12 @@ export default function Chart() {
     ]
 
     const COLORS = [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 206, 86)",
-        "rgb(75, 192, 192)",
-        "rgb(153, 159, 64)",
-        "rgb(255, 159, 64)",
+        "rgba(255, 99, 132, .7)",
+        "rgba(54, 162, 235, .7)",
+        "rgba(255, 206, 86, .7)",
+        "rgba(75, 192, 192, .7)",
+        "rgba(153, 159, 64, .7)",
+        "rgba(255, 159, 64, .7)",
     ];
 
     const [recette, setRecette] = useState([])
@@ -43,7 +45,7 @@ export default function Chart() {
                 case "Gain":
                     data[1].value = data[1].value + element.amount;
                     break;
-                case "Impôt":
+                case "Impot":
                     data[2].value = data[2].value + element.amount;
                     break;
                 case "Lotto":
@@ -60,11 +62,33 @@ export default function Chart() {
             }
         })
 
+    let total = data[0].value + data[1].value + data[2].value + data[3].value + data[4].value + data[5].value;
+
+
     return (
         <div className="container">
             <div className="row">
-            <div className="col-6 stats">
+            <div className="col-6 stats d-flex justify-content-center align-items-center">
+                <div className="card card-stats" style={{width: "20rem"}}>
+                    <ul className="list-group list-group-flush text-center">
 
+                        <li className="list-group-item" style={{backgroundColor: `${COLORS[0]}`}}>{data[0].name} : {((100/total)*data[0].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[0].value).toFixed(2)} %</li>
+
+                        <li className="list-group-item"  style={{backgroundColor: `${COLORS[1]}`}}>{data[1].name} : {((100/total)*data[1].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[1].value).toFixed(2)} %</li>
+
+                        <li className="list-group-item"  style={{backgroundColor: `${COLORS[2]}`}}>{data[2].name} : {((100/total)*data[2].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[2].value).toFixed(2)} %</li>
+
+                        <li className="list-group-item"  style={{backgroundColor: `${COLORS[3]}`}}>{data[3].name} : {((100/total)*data[3].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[3].value).toFixed(2)} %</li>
+
+                        <li className="list-group-item"  style={{backgroundColor: `${COLORS[4]}`}}>{data[4].name} : {((100/total)*data[4].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[4].value).toFixed(2)} %</li>
+
+                        <li className="list-group-item"  style={{backgroundColor: `${COLORS[5]}`}}>{data[5].name} : {((100/total)*data[5].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[5].value).toFixed(2)} %</li>
+
+                    </ul>
+                <div className="card-footer text-center">
+                    Total : {total} €
+                </div>
+            </div>
             </div>
             <div className="col-6 chart">
                 <PieChart width={800} height={600}>

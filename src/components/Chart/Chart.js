@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+import "./Chart.css";
 
 export default function Chart() {
 
@@ -16,14 +17,14 @@ export default function Chart() {
     ]
 
     const COLORS = [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 206, 86)",
-        "rgb(75, 192, 192)",
-        "rgb(153, 159, 64)",
-        "rgb(255, 159, 64)",
-        "rgb(56, 159, 64)",
-        "rgb(200, 100, 82)",
+        "rgba(255, 99, 132, .6)",
+        "rgba(54, 162, 235, .6)",
+        "rgba(255, 206, 86, .6)",
+        "rgba(75, 192, 192, .6)",
+        "rgba(153, 159, 64, .6)",
+        "rgba(255, 159, 64, .6)",
+        "rgba(56, 159, 64, .6)",
+        "rgba(200, 100, 82, .6)",
     ];
 
     const [expense, setExpense] = useState([])
@@ -95,7 +96,7 @@ export default function Chart() {
                     </PieChart>
                 </div>
                 <div className="col-6 stats d-flex justify-content-center align-items-center">
-                    <div className="card" style={{width: "20rem"}}>
+                    <div className="card card-stats" style={{width: "20rem"}}>
                         <ul className="list-group list-group-flush text-center">
 
                             <li className="list-group-item" style={{backgroundColor: `${COLORS[0]}`}}>{data[0].name} : {((100/total)*data[0].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[0].value).toFixed(2)} %</li>

@@ -3,18 +3,20 @@ import  '@fortawesome/fontawesome-free/js/all';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// Import Dashboard / Budget / Statistiques
+// Import Dashboard / Recap / Statistiques / About
 import Dashboard from './pages/Dashboard/Dashboard';
-import Budget from './pages/Budget/Budget';
+import Recap from './pages/Recap/Recap';
 import Statistiques from './pages/Statistiques/Statistiques';
+import About from './pages/About/About';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Dashboard} />
-        <Route exact path="/Budget" component={Budget} />
+        <Route exact path="/Recap" component={Recap} />
         <Route exact path="/Stats" component={Statistiques} />
+        <Route exact path="/About" component={About} />
       </Switch>
     </Router>
     
