@@ -22,7 +22,11 @@ const NewIncomes = (props) => {
         let month = (event.target[3].value).slice(5,7); // Récupération du mois
         let time = day + "-" + month + "-" + year; // Remise en place de la date dans le bon ordre
 
-        setIncome([...income, {description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+        if(income.length === 0) {
+            setIncome([{description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+        } else {
+            setIncome([...income, {description, amount, category, time} ])
+        }
         console.log(income); // Les nouvelles dépenses se rajoutent correctement dans le state
     }
 

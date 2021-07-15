@@ -1,0 +1,126 @@
+import React from 'react'
+import { useState, useEffect } from "react"
+import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+
+export default function Chart() {
+
+    const data = [
+    {name: "Autres", value: 0},
+    {name: "Alimentation", value: 0},
+    {name: "Assurance", value: 0},
+    {name: "Banque", value: 0},
+    {name: "Loisirs", value: 0},
+    {name: "Loyer", value: 0},
+    {name: "Santé", value: 0},
+    {name: "Sport", value: 0},
+    ]
+
+    const COLORS = [
+        "rgb(255, 99, 132)",
+        "rgb(54, 162, 235)",
+        "rgb(255, 206, 86)",
+        "rgb(75, 192, 192)",
+        "rgb(153, 159, 64)",
+        "rgb(255, 159, 64)",
+        "rgb(56, 159, 64)",
+        "rgb(200, 100, 82)",
+    ];
+
+    const [expense, setExpense] = useState([])
+
+    useEffect(()=>{
+
+        const depense = localStorage.getItem('data')
+        
+        if(depense){
+            setExpense(JSON.parse(depense))
+        }
+        },[])
+
+        // la boucle passe correctement dans mon hooks d'état et n'additionne qu'une seule fois
+
+        expense.forEach(element => {
+            switch (element.category) {
+                case "Autres":
+                    data[0].value = data[0].value + element.amount;
+                    break;
+                case "Alimentation":
+                    data[1].value = data[1].value + element.amount;
+                    break;
+                case "Assurance":
+                    data[2].value = data[2].value + element.amount;
+                    break;
+                case "Banque":
+                    data[3].value = data[3].value + element.amount;
+                    break;
+                case "Loisirs":
+                    data[4].value = data[4].value + element.amount;
+                    break;
+                case "Loyer":
+                    data[5].value = data[5].value + element.amount;
+                    break;
+                case "Santé":
+                    data[6].value = data[6].value + element.amount;
+                    break;
+                case "Sport":
+                    data[7].value = data[7].value + element.amount;
+                    break;
+                default:
+                    break;
+            }
+        })
+
+    let total = data[0].value + data[1].value + data[2].value + data[3].value + data[4].value + data[5].value + data[6].value + data[7].value;
+
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col-6 chart">
+                    <PieChart width={800} height={600}>
+                        <Pie
+                            data={data}
+                            cx={220}
+                            cy={300}
+                            // innerRadius={150} // Modification de la taille intérieure (espace intérieure)
+                            outerRadius={200} // Modification de la taille extérieure (bord)
+                            fill="#8884d8"
+                            paddingAngle={1} // espace entre les parts
+                            dataKey="value"
+                            >
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                </div>
+                <div className="col-6 stats d-flex justify-content-center align-items-center">
+                    <div className="card" style={{width: "20rem"}}>
+                        <ul className="list-group list-group-flush text-center">
+
+                            <li className="list-group-item" style={{backgroundColor: `${COLORS[0]}`}}>{data[0].name} : {((100/total)*data[0].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[0].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[1]}`}}>{data[1].name} : {((100/total)*data[1].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[1].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[2]}`}}>{data[2].name} : {((100/total)*data[2].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[2].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[3]}`}}>{data[3].name} : {((100/total)*data[3].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[3].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[4]}`}}>{data[4].name} : {((100/total)*data[4].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[4].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[5]}`}}>{data[5].name} : {((100/total)*data[5].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[5].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[6]}`}}>{data[6].name} : {((100/total)*data[6].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[6].value).toFixed(2)} %</li>
+
+                            <li className="list-group-item"  style={{backgroundColor: `${COLORS[7]}`}}>{data[7].name} : {((100/total)*data[7].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[7].value).toFixed(2)} %</li>
+
+                        </ul>
+                        <div className="card-footer text-center">
+                            Total : {total} €
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

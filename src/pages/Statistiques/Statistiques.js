@@ -56,8 +56,8 @@ import React, { Component, Fragment } from 'react'
 import "./Statistiques.css"
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
-import PieChart from '../../components/Chart/PieChart'
-import PieChart2 from '../../components/Chart/PieChart2'
+import Chart from '../../components/Chart/Chart'
+import Chart2 from '../../components/Chart/Chart2'
 
 export default class Statistiques extends Component {
 
@@ -96,86 +96,33 @@ export default class Statistiques extends Component {
         if(recette){
             this.setState({recette : recette})
         }
-        console.log("ComponentDidMount");
     }
 
     render() {
 
-        // Récupération des items de recette pour les dispatcher vers les catégories appropriées en vue des chart
-
-        this.state.recette.forEach(element => {
-            switch (element.category) {
-                case "Autres":
-                    this.state.catRecette.autres += element.amount;
-                    break;
-                case "Gain":
-                    this.state.catRecette.gain += element.amount;
-                    break;
-                case "Impôt":
-                    this.state.catRecette.impôt += element.amount;
-                    break;
-                case "Lotto":
-                    this.state.catRecette.lotto += element.amount;
-                    break;
-                case "Remboursement":
-                    this.state.catRecette.remboursement += element.amount;
-                    break;
-                case "Salaire":
-                    this.state.catRecette.salaire += element.amount;
-                    break;
-                default:
-                    break;
-            }
-        })
-
-        // Récupération des items de dépense pour les dispatcher vers les catégories appropriées en vue des chart
-
-
-        this.state.depense.forEach(element => {
-            switch (element.category) {
-                case "Autres":
-                    this.state.catDepense.autres += element.amount;
-                    break;
-                case "Alimentation":
-                    this.state.catDepense.alimentation += element.amount;
-                    break;
-                case "Assurance":
-                    this.state.catDepense.assurance += element.amount;
-                    break;
-                case "Banque":
-                    this.state.catDepense.banque += element.amount;
-                    break;
-                case "Loisirs":
-                    this.state.catDepense.loisirs += element.amount;
-                    break;
-                case "Loyer":
-                    this.state.catDepense.loyer += element.amount;
-                    break;
-                case "Santé":
-                    this.state.catDepense.santé += element.amount;
-                    break;
-                case "Sport":
-                    this.state.catDepense.sport += element.amount;
-                    break;
-                default:
-                    break;
-            }
-        })
-
-        
-
         return (
             <Fragment>
                 <Header />
+                <section>
+                <h1 className="text-center text-decoration-underline">Votre page de Statistiques</h1>
 
-                    <h1>Page statistique</h1>
-                    {console.log("Je suis dans le return de Statistique")}
-                    {console.log(this.state.catRecette)}
-                    {console.log(this.state.catDepense)}
-                    
-                    <PieChart data={this.state.catDepense}/>
-                    {/* <PieChart2 data={this.state.catRecette}/> */}
-
+                <div className="container">
+                    <nav className="d-flex justify-content-center">
+                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button className="nav-link active" id="nav-expense-tab" data-bs-toggle="tab" data-bs-target="#nav-expense" type="button" role="tab" aria-controls="nav-expense" aria-selected="true">Dépense</button>
+                            <button className="nav-link" id="nav-income-tab" data-bs-toggle="tab" data-bs-target="#nav-income" type="button" role="tab" aria-controls="nav-income" aria-selected="false">Recettes</button>
+                        </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="nav-expense" role="tabpanel" aria-labelledby="nav-expense-tab">
+                            <Chart />
+                        </div>
+                        <div className="tab-pane fade" id="nav-income" role="tabpanel" aria-labelledby="nav-income-tab">
+                            <Chart2 />
+                        </div>
+                    </div>
+                </div>
+            </section>
                 <Footer/>
             </Fragment>
         )

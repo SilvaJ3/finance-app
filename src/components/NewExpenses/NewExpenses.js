@@ -19,8 +19,12 @@ const NewExpenses = (props) => {
         let day = (event.target[3].value).slice(8,10); // Récupération du jour
         let month = (event.target[3].value).slice(5,7); // Récupération du mois
         let time = day + "-" + month + "-" + year; // Remise en place de la date dans le bon ordre
-
-        setExpense([...expense, {description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+        
+        if(expense.length === 0) {
+            setExpense([{description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+        } else {
+            setExpense([...expense, {description, amount, category, time} ])
+        }
         console.log(expense); // Les nouvelles dépenses se rajoutent correctement dans le state
 
     }
@@ -46,6 +50,10 @@ const NewExpenses = (props) => {
         localStorage.setItem('data',JSON.stringify(expense))
     })
 
+    let handleDelete = (event) => {
+        console.log(event);
+        console.log(event.target);
+    }
 
 
     return(
@@ -95,8 +103,8 @@ const NewExpenses = (props) => {
                             <p>Catégorie : {item.category}</p>
                         </div>
                         <div className="col-4 d-flex align-items-center justify-content-center">
-                            <i className="far fa-edit icons"></i>
-                            <i className="fas fa-eraser icons"></i>
+                            <button className="btn border-none"><i className="far fa-edit icons"></i></button>
+                            <button className="btn border-none" onClick={(event) => handleDelete(event)} key={index}><i className="fas fa-eraser icons"></i></button>
                         </div>
                         
                     </div>
