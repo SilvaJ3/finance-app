@@ -3,6 +3,8 @@ import NewExpenses from "../../components/NewExpenses/NewExpenses";
 import NewIncomes from "../../components/NewIncomes/NewIncomes"
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import Chart3 from '../../components/Chart/Chart3'
+
 import "./dashboard.css"
 
 function Dashboard() {
@@ -11,13 +13,13 @@ function Dashboard() {
     const [recette, setRecette] = useState([]);
 
     const recupDepense = (data) => {
-        if (data !== setDepense ) {
+        if (data !== depense ) {
         setDepense(data);
         }
     }
 
     const recupRecette = (income) => {
-        if (income !== setRecette) {
+        if (income !== recette) {
             setRecette(income)
         }
     }
@@ -65,6 +67,9 @@ function Dashboard() {
                         <div>
                             <h1>Balance :</h1>
                             <p>{solde} €</p>
+                        </div>
+                        <div>
+                            <Chart3 totalR={totalRecette} totalD={totalValue}/>
                         </div>
                     </div>
                     <div className="col-8 border dash-col-left">

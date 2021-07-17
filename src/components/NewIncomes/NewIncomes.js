@@ -95,8 +95,8 @@ const NewIncomes = (props) => {
                                 <p>Catégorie : {item.category}</p>
                             </div>
                             <div className="col-4 d-flex align-items-center justify-content-center">
-                                <i className="far fa-edit icons"></i>
-                                <i className="fas fa-eraser icons"></i>
+                                <i className="far fa-edit icones"></i>
+                                <i className="fas fa-eraser icones"></i>
                             </div>
                             
                         </div>

@@ -1,0 +1,28 @@
+.about {
+    margin: 5% 0%;
+}
+
+.accordion_bg {
+    background-color: rgba(72, 172, 152, 0.5);
+}
+
+.accordion-header {
+    background-color: rgba(255, 255, 255, 0.26) !important;
+}
+
+.icons {
+    border-radius: 50%;
+    background-color :rgba(72, 172, 152, 0.5);
+    padding: 3%;
+    font-size: 70px;
+    color: white;
+}
+
+.italic {
+    color: green;
+    font-weight: bold;
+}
+
+.part_1, .part_2, .part_3 {
+    margin-top: 4%;
+}

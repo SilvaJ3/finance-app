@@ -9,7 +9,7 @@ function Header() {
                 <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                     <div className="container-fluid d-flex">
                         <div className="user d-flex justify-content-evenly align-items-center px-3">
-                            <i class="far fa-user-circle text-white"></i>
+                            <i className="far fa-user-circle text-white"></i>
                             <span className="text-white ml-2">Bonjour Junior</span>
                         </div>
                     

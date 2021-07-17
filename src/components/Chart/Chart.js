@@ -1,3 +1,5 @@
+/* --------------------------- Chart des dépenses --------------------------- */
+
 import React from 'react'
 import { useState, useEffect } from "react"
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
@@ -28,6 +30,8 @@ export default function Chart() {
     ];
 
     const [expense, setExpense] = useState([])
+
+    // Récupération du Local Storage
 
     useEffect(()=>{
 
@@ -71,6 +75,8 @@ export default function Chart() {
             }
         })
 
+    
+    // Total des dépenses pour le calcul du ratio en % par catégories
     let total = data[0].value + data[1].value + data[2].value + data[3].value + data[4].value + data[5].value + data[6].value + data[7].value;
 
     return (

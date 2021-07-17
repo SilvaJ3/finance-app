@@ -1,57 +1,3 @@
-// import React, { Fragment, useState, useEffect } from 'react'
-// import "./Statistiques.css"
-// import Header from '../../components/Header/Header'
-// import Footer from '../../components/Footer/Footer'
-
-// export default function Statistiques() {
-
-//     const [depenseGraph, setDepenseGraph] = useState([]);
-//     const [recetteGraph, setRecetteGraph] = useState([]);
-//     const [incomeValue, setIncomeValue] = useState({
-//         gain: [],
-//     })
-
-//     /* ------------------------ Récupération des dépenses ----------------------- */
-
-//     useEffect(()=>{
-//         const data = localStorage.getItem('data')
-//         if(data){
-//             setDepenseGraph(JSON.parse(data))
-//         }
-//     },[])
-
-//     /* ------------------------ Récupération des recettes ----------------------- */
-
-//     useEffect(()=>{
-//         const recette = localStorage.getItem('recette')
-//         if(recette){
-//             setRecetteGraph(JSON.parse(recette))
-//         }
-//     },[])
-
-//     console.log(recetteGraph);
-//     console.log(depenseGraph);
-
-//     recetteGraph.forEach(element => {
-//         if(element.category === "Gain") {
-//             setIncomeValue([...gain, {element} ])
-//         }
-//     })
-
-//     return (
-//         <Fragment>
-//             <Header />
-
-//             <h1>Page Statistiques</h1>
-
-//             <Footer />
-//         </Fragment>
-//     )
-// }
-
-
-// Alternatif class
-
 import React, { Component, Fragment } from 'react'
 import "./Statistiques.css"
 import Header from '../../components/Header/Header'
@@ -107,7 +53,7 @@ export default class Statistiques extends Component {
                     <div className="container p-5">
                         <h1 className="text-center text-decoration-underline pb-5">Votre page de Statistiques</h1>
 
-                        <div className="container">
+                        <div className="">
                             <nav className="d-flex justify-content-center">
                                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button className="nav-link active" id="nav-expense-tab" data-bs-toggle="tab" data-bs-target="#nav-expense" type="button" role="tab" aria-controls="nav-expense" aria-selected="true">Dépense</button>
@@ -131,7 +77,3 @@ export default class Statistiques extends Component {
         )
     }
 }
-
-
-
-// , "Banque", "Loisirs", "Loyer", "Santé", "Sport"

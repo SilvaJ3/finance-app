@@ -1,6 +1,8 @@
 import 'bootstrap/scss/bootstrap.scss';
 import  '@fortawesome/fontawesome-free/js/all';
 import './App.css';
+
+// Router-Dom
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Import Dashboard / Recap / Statistiques / About

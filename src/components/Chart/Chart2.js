@@ -1,3 +1,5 @@
+/* --------------------------- Chart des recettes --------------------------- */
+
 import React from 'react'
 import { useState, useEffect } from "react"
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
@@ -62,6 +64,8 @@ export default function Chart() {
             }
         })
 
+
+    // Total des recettes pour le calcul du ratio en % par catégories
     let total = data[0].value + data[1].value + data[2].value + data[3].value + data[4].value + data[5].value;
 
 
@@ -71,6 +75,8 @@ export default function Chart() {
             <div className="col-6 stats d-flex justify-content-center align-items-center">
                 <div className="card card-stats" style={{width: "20rem"}}>
                     <ul className="list-group list-group-flush text-center">
+
+                        {/* ni le map ni le forEach ne sont passés en l'état */}
 
                         <li className="list-group-item" style={{backgroundColor: `${COLORS[0]}`}}>{data[0].name} : {((100/total)*data[0].value).toFixed(2) === "Infinity" ? "0" : ((100/total)*data[0].value).toFixed(2)} %</li>
 

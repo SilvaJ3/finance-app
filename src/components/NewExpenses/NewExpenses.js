@@ -8,6 +8,7 @@ const NewExpenses = (props) => {
     const [expense, setExpense] = useState([]);
 
     const handleSubmit = (event) => {
+        let id = 0;
         event.preventDefault(); // La page ne se recherchera pas après le submit du formulaire
         let description = event.target[0].value;
         let amount = Number(event.target[1].value);
@@ -19,14 +20,16 @@ const NewExpenses = (props) => {
         let day = (event.target[3].value).slice(8,10); // Récupération du jour
         let month = (event.target[3].value).slice(5,7); // Récupération du mois
         let time = day + "-" + month + "-" + year; // Remise en place de la date dans le bon ordre
+
+        let createdDay = new Date().toLocaleString("fr-FR").slice(0,10);
         
         if(expense.length === 0) {
-            setExpense([{description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+            setExpense([{description, amount, category, time, id} ]) //On doit maper dans un array donc il faut modifier notre state via un array
         } else {
-            setExpense([...expense, {description, amount, category, time} ])
+            setExpense([...expense, {description, amount, category, time, id, createdDay} ])
         }
         console.log(expense); // Les nouvelles dépenses se rajoutent correctement dans le state
-
+        id++;
     }
 
 
@@ -50,11 +53,16 @@ const NewExpenses = (props) => {
         localStorage.setItem('data',JSON.stringify(expense))
     })
 
-    let handleDelete = (event) => {
-        console.log(event);
-        console.log(event.target);
+    /* ------------------------ Suppression d'une dépense ----------------------- */
+
+    let handleDelete = (id) => {
+        let newData = expense.filter(element => element.id !== id);
+        console.log(expense);
+        console.log(newData);
+        setExpense({newData});
     }
 
+    // let dateFr = new Date().toLocaleString("fr-FR").slice(0,10);
 
     return(
         <div className="d-flex flex-column justify-content-center w-100">
@@ -91,9 +99,10 @@ const NewExpenses = (props) => {
                 </form>
             </div>
             
+            {/* prévoir un if pour ne pas lancer le map si l'array est vide */}
 
-            <div className="list-container">
-            {expense.map((item, index) => {
+            <div className="list-container">  
+            { expense.length !== 0 && expense !== null && expense !== undefined && expense.map((item, index) => {
                 if(expense.description !== "") {
                     return (
                     <div className="row d-flex expense my-2" key={index}>
@@ -103,17 +112,17 @@ const NewExpenses = (props) => {
                             <p>Catégorie : {item.category}</p>
                         </div>
                         <div className="col-4 d-flex align-items-center justify-content-center">
-                            <button className="btn border-none"><i className="far fa-edit icons"></i></button>
-                            <button className="btn border-none" onClick={(event) => handleDelete(event)} key={index}><i className="fas fa-eraser icons"></i></button>
+                            <button className="btn border-none"><i className="far fa-edit icones"></i></button>
+                            <button className="btn border-none" onClick={() => handleDelete(item.id)} key={index}><i className="fas fa-eraser icones"></i></button>
                         </div>
                     </div>
-                )
-                }
-                return (
-                    <p>Vous avez actuellement {expense.length} dépenses</p>
-                )
-                
-            })}
+                ) // return
+                } // if
+            } // function map
+            ) // param map
+        }
+        
+            
             </div>
         </div>
     );
