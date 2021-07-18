@@ -67,6 +67,40 @@ const NewIncomes = (props) => {
         setIncome(JSON.parse(recette)); // on setState du nouveau contenu du localStorage et ainsi on évite un dysfonctionnement du map et du sort
     }
 
+    /* ----------------------- Modification d'une recette ----------------------- */
+
+    let handleEdit = (event) => {
+        event.preventDefault();
+        console.log(event.target);
+        let parent = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id; // on cible la row en partant du btn modal et en remontant sur 5 parents pour retrouver celle-ci et ainsi retrouver l'index dans le state
+        let place = income.indexOf(income[parent]); // on récupère l'index de notre cible
+        let description = event.target[0].value;
+        let category = event.target[1].value;
+        let amount = event.target[2].value;
+
+        /* ------------------ Récupération de la date en format EU ------------------ */
+
+        let year = (event.target[3].value).slice(0,4); // Récupération de l'année
+        let day = (event.target[3].value).slice(8,10); // Récupération du jour
+        let month = (event.target[3].value).slice(5,7); // Récupération du mois
+        let time = day + "-" + month + "-" + year; // Remise en place de la date dans le bon ordre
+        let date = year + month + day;
+
+        /* ---------------- On redéfinit les valeurs de notre recette --------------- */
+
+        income[place].description = description;
+        income[place].category = category;
+        income[place].amount = Number(amount);
+        income[place].time = time;
+        income[place].date = date;
+
+        console.log(income); // la recette est bien modifié, il reste à actualiser notre localStorage
+
+        localStorage.setItem('recette',JSON.stringify(income)) // on modifie le contenu du localStorage
+        const recette = localStorage.getItem('recette') // On récupère son nouveau contenu
+        setIncome(JSON.parse(recette)); // on setState du nouveau contenu du localStorage et ainsi on évite un dysfonctionnement du map et du sort
+    }
+
 
     return(
         <div className="formulaire d-flex flex-column justify-content-center w-100">
@@ -112,9 +146,54 @@ const NewIncomes = (props) => {
                                 <p>Description : {item.description}</p>
                                 <p>Catégorie : {item.category}</p>
                             </div>
-                            <div className="col-4 d-flex align-items-center justify-content-center">
-                                <i className="far fa-edit icones"></i>
-                                <button className="btn border-none" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones"></i></button>
+                            <div className="col-4 d-flex align-items-center justify-content-evenly">
+                                <button className="btn border-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#editModalIncome"><i className="far fa-edit icones text-white"></i></button>
+                                <button className="btn border-none bg-primary p-1" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones text-white"></i></button>
+                            </div>
+
+                            {/* Modal pour éditer le contenu de notre recette */}
+
+                            <div class="modal fade" id="editModalIncome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modifier votre recette :</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form className="d-flex flex-column w-100" onSubmit={(index) => handleEdit(index)}>
+                                        <div className="d-flex flex-column align-items-center my-2">
+                                            <div className="col-12">
+                                                <input type="text" placeholder="Description de votre recette..." name="description" className="description w-100 rounded-0" required />
+                                            </div>
+                                            <div className="col-6 my-3">
+                                                <select className="form-select category rounded-0" name="category" aria-label="Default select example">
+                                                    <option defaultValue value="Autres">Autres</option>
+                                                    <option value="Gain">Gain</option>
+                                                    <option value="Impot">Impôt</option>
+                                                    <option value="Lotto">Lotto</option>
+                                                    <option value="Remboursement">Remboursement</option>
+                                                    <option value="Salaire">Salaire</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="d-flex justify-content-center align-items-center">
+                                            <div className="col-4">
+                                                <input type="number" className="amountExpenses w-100 rounded-0" name="amount" step="0.01" required min="0" placeholder="nouvelle valeur"/>
+                                            </div>
+                                            <div className="col-4 d-flex justify-content-center">
+                                                <input type="date" name="time" id="time" className="time" required min="2020-01-01" max="2023-12-31"/>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer mt-3">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
                             </div>
                             
                         </div>
