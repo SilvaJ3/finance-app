@@ -54,7 +54,6 @@ const NewIncomes = (props) => {
     /* --------------- Tri par date du plus ancien au plus récent --------------- */
 
     let tri = income.sort((a,b) => parseInt(b.date) - parseInt(a.date));
-    console.log(tri);
 
     /* ------------------------ Suppression d'une recette ----------------------- */
 
@@ -77,6 +76,7 @@ const NewIncomes = (props) => {
         let description = event.target[0].value;
         let category = event.target[1].value;
         let amount = event.target[2].value;
+        console.log(place);
 
         /* ------------------ Récupération de la date en format EU ------------------ */
 
@@ -105,6 +105,8 @@ const NewIncomes = (props) => {
     return(
         <div className="formulaire d-flex flex-column justify-content-center w-100">
             <div className="form-container border">
+                <h1 className="text-center">Ajouter une nouvelle recette :</h1>
+                {/* FORMULAIRE D'AJOUT */}
                 <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
                     <div className="d-flex">
                         <div className="col-9">
@@ -140,7 +142,7 @@ const NewIncomes = (props) => {
                 {income.map((item, index) => {
                     if(income.description !== "") {
                         return (
-                        <div className="row d-flex income my-2" key={index}>
+                        <div className="row d-flex income my-2" key={index} id={index}>
                             <div className="col-8 d-flex flex-column justify-content-center">
                                 <p>Revenu du {item.time} d'une valeur de {item.amount} €</p>
                                 <p>Description : {item.description}</p>

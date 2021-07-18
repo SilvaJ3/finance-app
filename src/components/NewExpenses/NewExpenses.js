@@ -108,6 +108,8 @@ const NewExpenses = (props) => {
     return(
         <div className="d-flex flex-column justify-content-center w-100">
             <div className="form-container border">
+            <h1 className="text-center">Ajouter une nouvelle dépense :</h1>
+            {/* FORMULAIRE D'AJOUT */}
                 <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
                     <div className="d-flex">
                         <div className="col-9">
@@ -139,10 +141,6 @@ const NewExpenses = (props) => {
                     </div>
                 </form>
             </div>
-
-            
-            
-            {/* prévoir un if pour ne pas lancer le map si l'array est vide */}
 
             <div className="list-container">  
             { expense.map((item, index) => {
