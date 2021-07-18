@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import "./List.css"
 
 export default function ListDepense() {
 
@@ -14,12 +15,16 @@ export default function ListDepense() {
             setExpense(JSON.parse(depense))
         }
         },[])
+
+    /* ------------------------------ Tri par date ------------------------------ */
+
+    let tri = expense.sort((a,b) => parseInt(b.date) - parseInt(a.date));
     
     return (
         <Fragment>
             <section>
                 <div className="container mt-5">
-                    <div className="d-flex justify-content-center align-items-start">
+                    <div className="d-flex justify-content-center align-items-start listeCat">
                         <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button className="nav-link active" id="v-pills-autres-tab" data-bs-toggle="pill" data-bs-target="#v-pills-autres" type="button" role="tab" aria-controls="v-pills-autres" aria-selected="true">Autres</button>
                         <button className="nav-link" id="v-pills-alimentation-tab" data-bs-toggle="pill" data-bs-target="#v-pills-alimentation" type="button" role="tab" aria-controls="v-pills-alimentation" aria-selected="false">Alimentation</button>
@@ -32,7 +37,7 @@ export default function ListDepense() {
                         </div>
                         <div className="tab-content" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-autres" role="tabpanel" aria-labelledby="v-pills-autres-tab">
-                                <table class="table">
+                                <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -46,7 +51,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Autres") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -61,7 +66,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-alimentation" role="tabpanel" aria-labelledby="v-pills-alimentation-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -75,7 +80,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Alimentation") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -90,7 +95,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-assurance" role="tabpanel" aria-labelledby="v-pills-assurance-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -104,7 +109,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Assurance") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -119,7 +124,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-banque" role="tabpanel" aria-labelledby="v-pills-banque-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -133,7 +138,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Banque") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -148,7 +153,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-loisirs" role="tabpanel" aria-labelledby="v-pills-loisirs-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -162,7 +167,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Loisirs") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -177,7 +182,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-loyer" role="tabpanel" aria-labelledby="v-pills-loyer-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -191,7 +196,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Loyer") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -206,7 +211,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-santé" role="tabpanel" aria-labelledby="v-pills-santé-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -220,7 +225,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Santé") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -235,7 +240,7 @@ export default function ListDepense() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-sports" role="tabpanel" aria-labelledby="v-pills-sports-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -249,7 +254,7 @@ export default function ListDepense() {
                                     {expense.map((element, index) => {
                                         if(element.category === "Sports") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>

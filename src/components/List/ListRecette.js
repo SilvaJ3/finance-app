@@ -1,8 +1,16 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import "./List.css"
+
 
 export default function ListRecette() {
 
     const [income, setIncome] = useState([])
+
+    /* ------------------------------ Tri par date ------------------------------ */
+
+    let tri = income.sort((a,b) => parseInt(b.date) - parseInt(a.date));
+
+    console.log(tri);
 
     // Récupération du Local Storage
 
@@ -19,11 +27,11 @@ export default function ListRecette() {
         <Fragment>
             <section>
                 <div className="container-fluid mt-5">
-                    <div className="d-flex justify-content-center align-items-start">
+                    <div className="d-flex justify-content-center align-items-start listCat">
 
                     <div className="tab-content" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-autres" role="tabpanel" aria-labelledby="v-pills-autres-tab">
-                                <table class="table">
+                                <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -37,7 +45,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Autres") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -52,7 +60,7 @@ export default function ListRecette() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-gain" role="tabpanel" aria-labelledby="v-pills-gain-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -66,7 +74,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Gain") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -81,7 +89,7 @@ export default function ListRecette() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-impot" role="tabpanel" aria-labelledby="v-pills-impot-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -95,7 +103,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Impôt") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -110,7 +118,7 @@ export default function ListRecette() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-lotto" role="tabpanel" aria-labelledby="v-pills-lotto-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -124,7 +132,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Lotto") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -139,7 +147,7 @@ export default function ListRecette() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-remboursement" role="tabpanel" aria-labelledby="v-pills-remboursement-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -153,7 +161,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Remboursement") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>
@@ -168,7 +176,7 @@ export default function ListRecette() {
                                 </table>
                             </div>
                             <div className="tab-pane fade" id="v-pills-salaire" role="tabpanel" aria-labelledby="v-pills-salaire-tab">
-                            <table class="table">
+                            <table className="table">
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -182,7 +190,7 @@ export default function ListRecette() {
                                     {income.map((element, index) => {
                                         if(element.category === "Salaire") {
                                             return (
-                                            <tr>
+                                            <tr key={index}>
                                             <th scope="row">{index}</th>
                                                 <td>{element.category}</td>
                                                 <td>{element.time}</td>

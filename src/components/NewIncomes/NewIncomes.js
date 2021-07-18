@@ -21,11 +21,12 @@ const NewIncomes = (props) => {
         let day = (event.target[3].value).slice(8,10); // Récupération du jour
         let month = (event.target[3].value).slice(5,7); // Récupération du mois
         let time = day + "-" + month + "-" + year; // Remise en place de la date dans le bon ordre
+        let date = year + month + day;
 
         if(income.length === 0) {
-            setIncome([{description, amount, category, time} ]) //On doit maper dans un array donc il faut modifier notre state via un array
+            setIncome([{description, amount, category, time, date} ]) //On doit maper dans un array donc il faut modifier notre state via un array
         } else {
-            setIncome([...income, {description, amount, category, time} ])
+            setIncome([...income, {description, amount, category, time, date} ])
         }
         console.log(income); // Les nouvelles dépenses se rajoutent correctement dans le state
     }
@@ -49,6 +50,23 @@ const NewIncomes = (props) => {
         
             localStorage.setItem('recette',JSON.stringify(income))
         })
+
+    /* --------------- Tri par date du plus ancien au plus récent --------------- */
+
+    let tri = income.sort((a,b) => parseInt(b.date) - parseInt(a.date));
+    console.log(tri);
+
+    /* ------------------------ Suppression d'une recette ----------------------- */
+
+    let handleDelete = (event) => {
+        let parent = event.target.parentElement.parentElement.id; // on cible la row où se trouve le btn
+        let place = income.indexOf(income[parent]); // on récupère l'index de notre cible
+        income.splice(place, 1); // on supprime l'item visé via son index
+        localStorage.setItem('recette',JSON.stringify(income)) // on modifie le contenu du localStorage
+        const recette = localStorage.getItem('recette') // On récupère son nouveau contenu
+        setIncome(JSON.parse(recette)); // on setState du nouveau contenu du localStorage et ainsi on évite un dysfonctionnement du map et du sort
+    }
+
 
     return(
         <div className="formulaire d-flex flex-column justify-content-center w-100">
@@ -96,7 +114,7 @@ const NewIncomes = (props) => {
                             </div>
                             <div className="col-4 d-flex align-items-center justify-content-center">
                                 <i className="far fa-edit icones"></i>
-                                <i className="fas fa-eraser icones"></i>
+                                <button className="btn border-none" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones"></i></button>
                             </div>
                             
                         </div>

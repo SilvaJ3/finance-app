@@ -1,7 +1,6 @@
 /* --------------------------- Chart des recettes --------------------------- */
 
 import React from 'react'
-import { useState, useEffect } from "react"
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import "./Chart.css";
 

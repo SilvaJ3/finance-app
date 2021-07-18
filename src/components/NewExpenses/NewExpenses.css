@@ -13,4 +13,5 @@
 
 .icones {
     font-size: 35px;
+    pointer-events: none;
 }
