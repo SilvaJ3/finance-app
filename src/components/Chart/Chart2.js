@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useState, useEffect } from "react"
-import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+import { PieChart, Pie, Tooltip, Cell, } from 'recharts';
 import "./Chart.css";
 
 
@@ -70,9 +70,9 @@ export default function Chart() {
 
 
     return (
-        <div className="container">
+        <div className="container p-5">
             <div className="row">
-            <div className="col-6 stats d-flex justify-content-center align-items-center">
+            <div className="col-lg-6 stats d-flex justify-content-center align-items-center">
                 <div className="card card-stats" style={{width: "20rem"}}>
                     <ul className="list-group list-group-flush text-center">
 
@@ -96,24 +96,26 @@ export default function Chart() {
                 </div>
             </div>
             </div>
-            <div className="col-6 chart">
-                <PieChart width={800} height={600}>
-                    <Pie
-                        data={data}
-                        cx={220}
-                        cy={300}
-                        // innerRadius={150} // Modification de la taille intérieure (espace intérieure)
-                        outerRadius={200} // Modification de la taille extérieure (bord)
-                        fill="#8884d8"
-                        paddingAngle={1} // espace entre les parts
-                        dataKey="value"
-                        >
-                        {data.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                    </Pie>
-                    <Tooltip />
-                </PieChart>
+            <div className="col-lg-6 chart">
+                
+                    <PieChart width={500} height={500}>
+                        <Pie
+                            data={data}
+                            cx={200}
+                            cy={200}
+                            // innerRadius={150} // Modification de la taille intérieure (espace intérieure)
+                            outerRadius={200} // Modification de la taille extérieure (bord)
+                            fill="#8884d8"
+                            paddingAngle={1} // espace entre les parts
+                            dataKey="value"
+                            >
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                
             </div>
             </div>
         </div>

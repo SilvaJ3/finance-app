@@ -104,37 +104,51 @@ const NewIncomes = (props) => {
 
     return(
         <div className="formulaire d-flex flex-column justify-content-center w-100">
-            <div className="form-container border">
+            <div className="form-container border border-dark d-flex flex-md-column align-items-center justify-content-center">
                 <h1 className="text-center">Ajouter une nouvelle recette :</h1>
                 {/* FORMULAIRE D'AJOUT */}
-                <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
-                    <div className="d-flex">
-                        <div className="col-9">
-                            <input type="text" placeholder="Description de votre recette..." name="description" className="description w-100 rounded-0" required />
+                <button className="btn border border-dark-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#addModal2"><i className="fas fa-plus icones text-white"></i></button>
+                <div className="modal fade" id="addModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Nouvelle recette</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="col-3">
-                            <input type="number" className="amountExpenses w-100 rounded-0" name="amount" required min="0" placeholder="42"/>
+                        <div className="modal-body">
+                        <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
+                            <div className="d-flex">
+                                <div className="col-9">
+                                    <input type="text" placeholder="Description de votre recette..." name="description" className="description w-100 rounded-0" required />
+                                </div>
+                                <div className="col-3">
+                                    <input type="number" className="amountExpenses w-100 rounded-0" name="amount" required min="0" placeholder="42"/>
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <div className="col-6">
+                                    <select className="form-select category rounded-0" name="category" aria-label="Default select example">
+                                        <option defaultValue value="Autres">Autres</option>
+                                        <option value="Gain">Gain</option>
+                                        <option value="Impot">Impôt</option>
+                                        <option value="Lotto">Lotto</option>
+                                        <option value="Remboursement">Remboursement</option>
+                                        <option value="Salaire">Salaire</option>
+                                    </select>
+                                </div>
+                                <div className="col-4 d-flex justify-content-center">
+                                    <input type="date" name="time" id="time" className="time" required min="2020-01-01" max="2023-12-31"/>
+                                </div>
+                            </div>
+                            <div className="modal-footer d-flex">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary btnExpenses rounded-0" >Valider</button>
+                            </div>
+                        </form>
+                        </div>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <div className="col-6">
-                            <select className="form-select category rounded-0" name="category" aria-label="Default select example">
-                                <option defaultValue value="Autres">Autres</option>
-                                <option value="Gain">Gain</option>
-                                <option value="Impot">Impôt</option>
-                                <option value="Lotto">Lotto</option>
-                                <option value="Remboursement">Remboursement</option>
-                                <option value="Salaire">Salaire</option>
-                            </select>
-                        </div>
-                        <div className="col-4 d-flex justify-content-center">
-                            <input type="date" name="time" id="time" className="time" required min="2020-01-01" max="2023-12-31"/>
-                        </div>
-                        <div className="col-2">
-                            <button type="submit" className="btn btn-primary btnExpenses rounded-0" >Valider</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
             
 
@@ -149,8 +163,8 @@ const NewIncomes = (props) => {
                                 <p>Catégorie : {item.category}</p>
                             </div>
                             <div className="col-4 d-flex align-items-center justify-content-evenly">
-                                <button className="btn border-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#editModalIncome"><i className="far fa-edit icones text-white"></i></button>
-                                <button className="btn border-none bg-primary p-1" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones text-white"></i></button>
+                                <button className="btn border border-dark-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#editModalIncome"><i className="far fa-edit icones text-white"></i></button>
+                                <button className="btn border border-dark-none bg-primary p-1" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones text-white"></i></button>
                             </div>
 
                             {/* Modal pour éditer le contenu de notre recette */}

@@ -107,10 +107,20 @@ const NewExpenses = (props) => {
 
     return(
         <div className="d-flex flex-column justify-content-center w-100">
-            <div className="form-container border">
+            <div className="form-container border border-dark d-flex flex-md-column align-items-center justify-content-center">
             <h1 className="text-center">Ajouter une nouvelle dépense :</h1>
             {/* FORMULAIRE D'AJOUT */}
-                <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
+            <button className="btn border border-dark-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#addModal"><i className="fas fa-plus icones text-white"></i></button>
+
+                <div className="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Nouvelle dépense</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                    <form className="d-flex flex-column w-100" onSubmit={handleSubmit}>
                     <div className="d-flex">
                         <div className="col-9">
                             <input type="text" placeholder="Description de votre dépense..." name="description" className="description w-100 rounded-0" required />
@@ -135,11 +145,17 @@ const NewExpenses = (props) => {
                         <div className="col-4 d-flex justify-content-center">
                             <input type="date" name="time" id="time" className="time" required min="2020-01-01" max="2023-12-31"/>
                         </div>
-                        <div className="col-2">
-                            <button type="submit" className="btn btn-primary btnExpenses rounded-0">Valider</button>
-                        </div>
                     </div>
+                        <div className="modal-footer d-flex">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary btnExpenses rounded-0" >Valider</button>
+                        </div>
                 </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                
             </div>
 
             <div className="list-container">  
@@ -153,8 +169,8 @@ const NewExpenses = (props) => {
                             <p>Catégorie : {item.category}</p>
                         </div>
                         <div className="col-4 d-flex align-items-center justify-content-evenly">
-                        <button className="btn border-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#editModal"><i className="far fa-edit icones text-white"></i></button>
-                            <button className="btn border-none bg-primary p-1" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones text-white"></i></button>
+                        <button className="btn border border-dark-none bg-primary p-1" data-bs-toggle="modal" data-bs-target="#editModal"><i className="far fa-edit icones text-white"></i></button>
+                            <button className="btn border border-dark-none bg-primary p-1" onClick={(index) => handleDelete(index)}><i className="fas fa-eraser icones text-white"></i></button>
                         </div>
                         {/* Modal pour éditer le contenu de notre dépense */}
 

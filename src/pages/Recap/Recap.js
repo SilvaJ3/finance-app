@@ -31,22 +31,16 @@ class Recap extends Component {
         <Fragment>
             <Header />
             <section>
-                <div className="container p-5">
+                <div className="container-md p-5">
                 <h1 className="text-center text-decoration-underline">Page Recap</h1>
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-9 d-flex justify-content-start">
+                            <div className="col-12 d-flex justify-content-lg-start">
                                 <ListDepense />
-                            </div>
-                            <div className="col-md-3">
-                                {/* <ListRecette /> */}
                             </div>
                         </div>
                         <div className="row mb-5">
-                            <div className="col-md-3">
-                                {/* <ListDepense /> */}
-                            </div>
-                            <div className="col-md-9 d-flex justify-content-end">
+                            <div className="col-12 d-flex justify-content-lg-end">
                                 <ListRecette />
                             </div>
                         </div>

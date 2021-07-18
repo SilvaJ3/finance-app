@@ -1,5 +1,10 @@
-.dash-col-left, .dash-col-right {
-    height: max-content;
+.dash-col-right {
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.dash-col-left {
+    height: 700px;
 }
 
 .dashboard{

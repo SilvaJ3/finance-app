@@ -26,8 +26,8 @@ export default function ListRecette() {
     return (
         <Fragment>
             <section>
-                <div className="container-fluid mt-5">
-                    <div className="d-flex justify-content-center align-items-start listCat">
+                <div className="mt-5">
+                    <div className="d-flex justify-content-center align-items-start listeCat">
 
                     <div className="tab-content" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-autres" role="tabpanel" aria-labelledby="v-pills-autres-tab">

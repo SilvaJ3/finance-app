@@ -3,7 +3,11 @@
     color: white;
 }
 
-.fa-user-circle {
-    width: 2em !important;
-    height: 1.5em !important;
+.link:hover {
+    color:rgba(72, 172, 152, 0.5);
+}
+
+.brand {
+    color : rgba(72, 172, 152, 0.5);
+    font-weight: bolder;
 }
