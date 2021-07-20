@@ -11,13 +11,12 @@ function Header() {
                         <div className="d-flex justify-content-evenly align-items-center">
                             <span className="text-white ml-2">WALLET <b className="brand">BUDGET</b></span>
                         </div>
-                    
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon bg-light"></span>
                         </button>
                         {/* Nav Bar UL */}
-                        <div className="collapse navbar-collapse my-2 d-flex justify-content-center" id="navbarNav">
-                            <ul className="navbar-nav">
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav d-flex justify-content-center">
                                 <li className="nav-item px-2">
                                     <Link className="link" to ="/">ACCUEIL</Link>
                                 </li>

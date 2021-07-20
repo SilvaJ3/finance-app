@@ -52,27 +52,29 @@ function Dashboard() {
     return(
         <Fragment>
             <Header />
-            <div className="container dashboard">
+            <div className="container-lg dashboard">
                 <h1 className="text-center pb-5 text-decoration-underline">Bienvenue sur votre page d'accueil</h1>
-                <div className="row">
-                    <div className="col-4 border border-dark d-flex flex-column dash-col-left">
+                <div className="row row_dashboard">
+                    <div className="col-md-4 border border-dark d-flex flex-md-column dash-col-left">
                         <div>
-                            <h1>Total dépenses :</h1>
-                            <p>{totalValue} €</p>
-                        </div>
-                        <div>
-                            <h1>Total recettes :</h1>
-                            <p>{totalRecette} €</p>
-                        </div>
-                        <div>
-                            <h1>Balance :</h1>
-                            <p>{solde} €</p>
+                            <div>
+                                <h1>Total dépenses :</h1>
+                                <p>{totalValue} €</p>
+                            </div>
+                            <div>
+                                <h1>Total recettes :</h1>
+                                <p>{totalRecette} €</p>
+                            </div>
+                            <div>
+                                <h1>Balance :</h1>
+                                <p>{solde} €</p>
+                            </div>
                         </div>
                         <div>
                             <Chart3 totalR={totalRecette} totalD={totalValue}/>
                         </div>
                     </div>
-                    <div className="col-8 border border-dark dash-col-right">
+                    <div className="col-md-8 border border-dark dash-col-right">
                         <ul className="nav nav-tabs d-flex justify-content-end" id="myTab" role="tablist">
                             <li className="nav-item" role="presentation">
                                 <button className="nav-link active" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button" role="tab" aria-controls="expenses" aria-selected="true">Dépenses</button>

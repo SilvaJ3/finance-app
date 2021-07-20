@@ -1,7 +1,7 @@
 /* --------------------------- Chart des recettes --------------------------- */
 
 import React from 'react'
-import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts';
 import "./Chart.css";
 
 
@@ -19,24 +19,26 @@ export default function Chart(props) {
 
     return (
         <div className="container">
-            <div className="chart d-flex justify-content-center">
-                <PieChart width={300} height={600}>
-                    <Pie
-                        data={data}
-                        cx={150}
-                        cy={150}
-                        // innerRadius={150} // Modification de la taille intérieure (espace intérieure)
-                        outerRadius={100} // Modification de la taille extérieure (bord)
-                        fill="#8884d8"
-                        paddingAngle={1} // espace entre les parts
-                        dataKey="value"
-                        >
-                        {data.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                    </Pie>
-                    <Tooltip />
-                </PieChart>
+            <div className="chart chart3 d-flex justify-content-center" style={{ height: 500 }}>
+                <ResponsiveContainer>
+                    <PieChart>
+                        <Pie
+                            data={data}
+                            // cx={200}
+                            // cy={200}
+                            // innerRadius={150} // Modification de la taille intérieure (espace intérieure)
+                            // outerRadius={200} // Modification de la taille extérieure (bord)
+                            fill="#8884d8"
+                            paddingAngle={1} // espace entre les parts
+                            dataKey="value"
+                            >
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                </ResponsiveContainer>
             </div>
         </div>
     )
