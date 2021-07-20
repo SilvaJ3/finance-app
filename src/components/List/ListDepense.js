@@ -23,7 +23,7 @@ export default function ListDepense() {
     return (
         <Fragment>
             <section>
-                <div className="container mt-5">
+                <div className="container-md mt-5">
                     <div className="d-flex justify-content-center listeCat">
                         <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button className="nav-link active" id="v-pills-autres-tab" data-bs-toggle="pill" data-bs-target="#v-pills-autres" type="button" role="tab" aria-controls="v-pills-autres" aria-selected="true">Autres</button>

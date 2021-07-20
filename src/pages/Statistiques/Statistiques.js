@@ -50,7 +50,7 @@ export default class Statistiques extends Component {
             <Fragment>
                 <Header />
                 <section>
-                    <div className="container p-5 mx-3">
+                    <div className="container d-flex flex-column justify-content-center p-5">
                         <h1 className="text-center text-decoration-underline pb-5">Votre page de Statistiques</h1>
 
                         <div className="">

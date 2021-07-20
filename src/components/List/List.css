@@ -3,6 +3,30 @@
     overflow-y: scroll;
 }
 
-@media screen and {
-    
+/* Redimensionnement des listes */
+
+@media screen and (max-width: 630px) {
+    .listeCat {
+        width: 100% !important;
+        overflow-x: scroll;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 428px) and (max-width: 629.98px){
+    .listeCat {
+        width: 100% !important;
+        overflow-x: scroll;
+        font-size: 8px;
+    }
+
+}
+
+@media screen and (max-width: 428px){
+    .listeCat {
+        width: 100% !important;
+        overflow-x: scroll;
+        font-size: 7px;
+    }
+
 }

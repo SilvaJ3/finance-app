@@ -31,7 +31,7 @@ class Recap extends Component {
         <Fragment>
             <Header />
             <section>
-                <div className="container-md p-5">
+                <div className="container-md p-md-5">
                 <h1 className="text-center text-decoration-underline">Page Recap</h1>
                     <div className="container">
                         <div className="row">
